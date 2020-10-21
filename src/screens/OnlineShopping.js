@@ -1,37 +1,50 @@
 import { Text, View, Image, TouchableOpacity, StyleSheet } from "react-native";
 import React from "react";
-import cart from "./assets/SuccessfulPurchase.png";
 
-export default function Cart() {
+export default function onlineShopping({ navigation }) {
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.header}>PAYMENT SUCCESSFUL</Text>
+        <Text style={styles.header}>ONLINE SHOPPING</Text>
       </View>
 
       <View>
         <Text style={styles.comment}>
-          Lorem Ipsum is simply dummy text of the printing and typesentting
+          Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industrys standard dummy text ever
-          since 1500s, when an unknown printer took
+          since 1500s, when an unknown printer
         </Text>
       </View>
 
       <View>
-        <Image source={cart} style={styles.image}></Image>
+        <Image
+          source={require("../../assets/onlineShopping.png")}
+          style={styles.image}
+        ></Image>
       </View>
 
-      <TouchableOpacity style={styles.buttonContainer}>
-        <Text style={styles.buttonText}>Get Started</Text>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("AddToCart");
+        }}
+        style={styles.buttonContainer}
+      >
+        <Text style={styles.buttonText}>Next</Text>
       </TouchableOpacity>
 
       <View style={styles.pagination}>
-        <Text style={styles.paginationText}>Previous</Text>
         <View style={styles.pageIcons}>
-          <Text style={styles.pageIcon1}></Text>
-          <Text style={styles.pageIcon1}></Text>
           <Text style={styles.pageIcon2}></Text>
+          <Text style={styles.pageIcon1}></Text>
+          <Text style={styles.pageIcon1}></Text>
         </View>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("AddToCart");
+          }}
+        >
+          <Text style={styles.paginationText}>Next</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -40,12 +53,12 @@ export default function Cart() {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: 30,
-    marginTop: 60,
   },
   header: {
     fontSize: 25,
     fontWeight: "bold",
-    marginBottom: 20,
+    marginBottom: 5,
+    marginTop: 15,
   },
 
   comment: {
@@ -75,12 +88,14 @@ const styles = StyleSheet.create({
   pagination: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-between",
     marginTop: 15,
   },
   pageIcons: {
     flexDirection: "row",
     justifyContent: "space-around",
     marginRight: 20,
+    marginLeft: 130,
   },
   pageIcon1: {
     height: 9,
@@ -99,6 +114,5 @@ const styles = StyleSheet.create({
   paginationText: {
     color: "#a8a8a8a8",
     fontSize: 17,
-    marginRight: 60,
   },
 });
